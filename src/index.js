@@ -1,6 +1,6 @@
-import express from "express";
-import dotenv from "dotenv"
-import bodyParser from "body-parser";
+import express from 'express';
+import dotenv from 'dotenv';
+import { sendNotice } from './sendnotice.js';
 
 dotenv.config({path: "../.env"})
 
