@@ -12,7 +12,7 @@ const client = matrix.createClient({
 export function sendNotice(body) {
     var roomID = process.env.ROOM_ID;
     var content = {
-        body: body.substring(0),
+        body: body,
         msgtype: 'm.notice',
     };
     client.sendEvent(roomID, 'm.room.message', content, '', (err, res) => {
