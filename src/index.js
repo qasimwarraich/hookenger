@@ -2,9 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { sendMessage } from './sendMessage.js';
 
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: '.env' });
 
-const app = express();
+export const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -20,6 +20,9 @@ app.post('/hook', (req, res) => {
     sendMessage(req.body);
 });
 
-app.listen(process.env.PORT, () =>
-    console.log(`App is live on http://localhost:${process.env.PORT}`)
-);
+
+if (process.env.ENVIRONMENT === "LOCAL") {
+    app.listen(process.env.PORT, () =>
+        console.log(`App is live on http://localhost:${process.env.PORT}`)
+    );
+}

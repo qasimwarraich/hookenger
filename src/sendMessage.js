@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import * as matrix from 'matrix-js-sdk';
 
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: '.env' });
 
 const client = matrix.createClient({
     baseUrl: process.env.MATRIX_URL,
@@ -16,7 +16,7 @@ export function sendMessage(body) {
         let content = createMessageContent(alert);
         client.sendEvent(roomID, 'm.room.message', content, '', (err, res) => {
             if (err) {
-                console.log(err);
+                console.log(err, res);
             }
         });
     }
