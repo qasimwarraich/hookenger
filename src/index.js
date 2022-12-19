@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { sendNotice } from './sendnotice.js';
+import { sendMessage } from './sendMessage.js';
 
 dotenv.config({ path: '../.env' });
 
@@ -17,7 +17,7 @@ app.post('/hook', (req, res) => {
     } else {
         res.status(420);
     }
-    sendNotice(req.body.message);
+    sendMessage(req.body);
 });
 
 app.listen(process.env.PORT, () =>
